@@ -5,11 +5,20 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 // Middleware
+// CORS aggiornato con tutti gli URL Vercel
 app.use(cors({
-  origin: process.env.FRONTEND_URL || 'http://localhost:3000',
-  credentials: true
+  origin: [
+    'http://localhost:3000',
+    'https://ping-pong-frontend.vercel.app',
+    'https://ping-pong-frontend-git-master-micheles-projects-bb62ac7b.vercel.app',
+    'https://ping-pong-frontend-fsvd410zu-micheles-projects-bb62ac7b.vercel.app',
+    /ping-pong-frontend.*\.vercel\.app$/,  // Regex per tutti i tuoi deployment
+    /micheles-projects-bb62ac7b\.vercel\.app$/  // Regex per il tuo account
+  ],
+  credentials: true,
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
-app.use(express.json());
 
 // Routes
 const utentiRoutes = require('./routes/utenti');
