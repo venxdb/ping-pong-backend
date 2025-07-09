@@ -38,7 +38,7 @@ app.get('/health', (req, res) => {
 app.get('/', (req, res) => {
   res.json({ 
     message: 'API Ping-Pong Tournament', 
-    version: '1.0.0',
+    version: '1.0.1',
     endpoints: [
       '/api/utenti/register',
       '/api/utenti/login',
